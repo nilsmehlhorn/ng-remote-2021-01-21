@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "bookmonkey-client"
+  "defaultProject": "bookmonkey-client",
+  "cli": {
+    "analytics": "026ba0f5-9f35-4a10-af2e-59804ed0add3"
+  }
 }
