@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Book } from './models/book';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'WDW Book Client';
+  book: Book = {
+    title: 'Moby Dick',
+    author: 'Herman Melville',
+    abstract: 'Lorem ipsum dolor sit amet'
+  }
 }

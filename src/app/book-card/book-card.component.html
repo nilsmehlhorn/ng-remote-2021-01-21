@@ -1,4 +1,4 @@
-<h3>Moby Dick</h3>
-<p class="author">Herman Melville</p>
-<a [style]="customStyles" href="">Details</a>
-<p>Lorem ipsum dolor sit amet</p>
+<h3>{{ content?.title }}</h3>
+<p class="author">{{ content?.author }}</p>
+<a (click)="handleDetailClick($event)" href="">Details</a>
+<p>{{ content?.abstract }}</p>

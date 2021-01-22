@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Book } from '../models/book';
 
 @Component({
   selector: 'app-book-card',
   templateUrl: './book-card.component.html',
   styleUrls: ['./book-card.component.scss']
 })
-export class BookCardComponent implements OnInit {
+export class BookCardComponent {
 
-  customStyles = {
-    color: 'red'
-  }
+  @Input() content: Book | undefined;
 
   constructor() { }
 
-  ngOnInit(): void {
+  handleDetailClick(event: MouseEvent): void {
+    event.preventDefault();
+    console.log(event)
   }
 
 }
