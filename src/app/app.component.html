@@ -1,6 +1,1 @@
-<input placeholder="Filter ..." (input)="updateBookSearchTerm($event)">
-<app-book-card
-  [content]="book"
-  (detailClick)="goToBookDetails($event)"
-  *ngFor="let book of books | bookFilter:searchTerm"
-></app-book-card>
+<app-book></app-book>
