@@ -7,11 +7,17 @@ import { Book } from './models/book';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  book: Book = {
+  books: Book[] = [{
     title: 'Moby Dick',
     author: 'Herman Melville',
     abstract: 'Lorem ipsum dolor sit amet'
+  },
+  {
+    title: '1984',
+    author: 'George Orwell',
+    abstract: 'World goes bad'
   }
+]
 
   goToBookDetails(book: Book): void {
     console.log(book)
