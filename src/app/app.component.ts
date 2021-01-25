@@ -12,4 +12,8 @@ export class AppComponent {
     author: 'Herman Melville',
     abstract: 'Lorem ipsum dolor sit amet'
   }
+
+  goToBookDetails(book: Book): void {
+    console.log(book)
+  }
 }
