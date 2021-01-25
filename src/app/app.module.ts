@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BookCardComponent } from './book-card/book-card.component';
+import { BookFilterPipe } from './pipes/book-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookCardComponent
+    BookCardComponent,
+    BookFilterPipe
   ],
   imports: [
     BrowserModule
