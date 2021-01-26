@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookApiService } from './book-api.service';
 import { Book } from './models/book';
 
 @Component({
@@ -8,20 +9,13 @@ import { Book } from './models/book';
 })
 export class BookComponent {
 
-  books: Book[] = [
-    {
-      title: 'Moby Dick',
-      author: 'Herman Melville',
-      abstract: 'Lorem ipsum dolor sit amet',
-    },
-    {
-      title: '1984',
-      author: 'George Orwell',
-      abstract: 'World goes bad',
-    },
-  ];
+  books: Book[]
 
   searchTerm = ''
+
+  constructor(private bookApi: BookApiService) {
+    this.books = this.bookApi.getBooks();
+  }
 
   goToBookDetails(book: Book): void {
     console.log(book);
