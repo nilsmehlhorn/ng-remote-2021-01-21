@@ -1,16 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
-import { delay, finalize, takeUntil } from 'rxjs/operators';
+import { EMPTY, Observable, Subject, Subscription } from 'rxjs';
+import { delay, finalize, share, takeUntil } from 'rxjs/operators';
 import { BookApiService } from './book-api.service';
 import { Book } from './models/book';
 
+interface Storage {
+
+}
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss'],
 })
 export class BookComponent implements OnInit, OnDestroy {
-  books: Book[] = [];
+  books$: Observable<Book[]> = EMPTY;
 
   searchTerm = '';
 
@@ -22,16 +25,12 @@ export class BookComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loading = true;
-    this.bookApi
+    this.books$ = this.bookApi
       .getBooks()
       .pipe(
         delay(3000),
-        finalize(() => (this.loading = false)),
-        takeUntil(this.onDestroy),
+        finalize(() => (this.loading = false))
       )
-      .subscribe((booksFromApi) => {
-        this.books = booksFromApi;
-      });
   }
   
   ngOnDestroy(): void {
