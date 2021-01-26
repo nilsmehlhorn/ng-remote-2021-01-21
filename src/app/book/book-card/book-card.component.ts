@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Book } from '../models/book';
 
 @Component({
@@ -6,7 +6,7 @@ import { Book } from '../models/book';
   templateUrl: './book-card.component.html',
   styleUrls: ['./book-card.component.scss']
 })
-export class BookCardComponent {
+export class BookCardComponent implements OnChanges {
 
   @Input() content: Book | undefined;
 
@@ -17,6 +17,10 @@ export class BookCardComponent {
   handleDetailClick(event: MouseEvent): void {
     event.preventDefault();
     this.detailClick.emit(this.content)
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('Change', changes)
   }
 
 }
