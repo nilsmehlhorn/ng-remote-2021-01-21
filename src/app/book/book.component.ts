@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { delay, finalize } from 'rxjs/operators';
 import { BookApiService } from './book-api.service';
 import { Book } from './models/book';
 
@@ -9,12 +10,20 @@ import { Book } from './models/book';
 })
 export class BookComponent {
 
-  books: Book[]
+  books: Book[] = []
 
   searchTerm = ''
 
+  loading = false
+
   constructor(private bookApi: BookApiService) {
-    this.books = this.bookApi.getBooks();
+    this.loading = true
+    this.bookApi.getBooks().pipe(
+      delay(3000),
+      finalize(() => this.loading = false)
+    ).subscribe(booksFromApi => {
+      this.books = booksFromApi
+    })
   }
 
   goToBookDetails(book: Book): void {

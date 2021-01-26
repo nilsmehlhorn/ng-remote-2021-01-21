@@ -4,3 +4,4 @@
   (detailClick)="goToBookDetails($event)"
   *ngFor="let book of books | bookFilter:searchTerm"
 ></app-book-card>
+<p *ngIf="loading">Loading...</p>
