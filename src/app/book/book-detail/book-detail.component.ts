@@ -26,18 +26,6 @@ export class BookDetailComponent implements OnInit, OnDestroy {
       .subscribe((book) => {
         this.book = book;
       });
-    let bookSubscription: Subscription | undefined
-    this.route.params.subscribe(params => {
-      // 1. isbn: dp1
-      // 2. isbn: dp2
-      if (bookSubscription) {
-        bookSubscription.unsubscribe()
-      }
-      bookSubscription = this.bookApi.getBookByIsbn(params.isbn).subscribe(book => {
-        // 1. book {isbn: dp2}
-        this.book = book
-      })
-    })
   }
 
   ngOnDestroy() {
