@@ -1,0 +1,7 @@
+<ng-container *ngIf="book">
+  <img [src]="book.cover" [alt]="book.title" height="200" />
+  <h3>{{ book.title }}</h3>
+  <p class="author">{{ book.author }}</p>
+  <p class="abstract">{{ book.abstract }}</p>
+  <p>Pages: {{ book.numPages }}</p>
+</ng-container>

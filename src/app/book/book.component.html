@@ -1,10 +1,10 @@
 <input placeholder="Filter ..." (input)="updateBookSearchTerm($event)" />
-<ng-container *ngIf="books$ | async as books">
+<ng-container *ngIf="books$ | async as books; else loading">
   <app-book-card
     [content]="book"
     (detailClick)="goToBookDetails($event)"
     *ngFor="let book of books | bookFilter: searchTerm"
   ></app-book-card>
-  <p *ngIf="loading">Loading...</p>
   <p>Total #Books: {{ books.length }}</p>
 </ng-container>
+<ng-template #loading>Loading ...</ng-template>

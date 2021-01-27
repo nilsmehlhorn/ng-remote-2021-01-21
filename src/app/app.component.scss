@@ -1,0 +1,10 @@
+nav {
+  display: flex;
+  margin: 1rem;
+  a {
+    margin: 0 12px;
+    &.active {
+      text-decoration: underline;
+    }
+  }
+}

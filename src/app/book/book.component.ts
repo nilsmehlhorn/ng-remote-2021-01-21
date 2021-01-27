@@ -1,44 +1,29 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { EMPTY, Observable, Subject, Subscription } from 'rxjs';
-import { delay, finalize, share, takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { EMPTY, Observable, Subject } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { BookApiService } from './book-api.service';
 import { Book } from './models/book';
 
-interface Storage {
-
-}
+interface Storage {}
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss'],
 })
-export class BookComponent implements OnInit, OnDestroy {
+export class BookComponent implements OnInit {
   books$: Observable<Book[]> = EMPTY;
 
   searchTerm = '';
 
-  loading = false;
-
-  private onDestroy = new Subject();
-
-  constructor(private bookApi: BookApiService) {}
+  constructor(private bookApi: BookApiService, private router: Router) {}
 
   ngOnInit(): void {
-    this.loading = true;
-    this.books$ = this.bookApi
-      .getBooks()
-      .pipe(
-        delay(3000),
-        finalize(() => (this.loading = false))
-      )
-  }
-  
-  ngOnDestroy(): void {
-    this.onDestroy.next()
+    this.books$ = this.bookApi.getBooks().pipe(delay(1000));
   }
 
   goToBookDetails(book: Book): void {
-    console.log(book);
+    this.router.navigate(['/books', 'details', book.isbn])
   }
 
   updateBookSearchTerm(event: Event): void {
