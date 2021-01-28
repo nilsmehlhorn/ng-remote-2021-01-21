@@ -1,0 +1,8 @@
+<form *ngIf="book" #form="ngForm" (ngSubmit)="save(form)">
+  <div class="form-field">
+    <label for="title">Title</label>
+    <input id="title" type="text" [(ngModel)]="book.title" name="title" #title="ngModel" required/>
+    <small *ngIf="title.errors?.required && title.dirty">Title is required</small>
+  </div>
+  <button type="submit" [disabled]="form.invalid">Submit</button>
+</form>

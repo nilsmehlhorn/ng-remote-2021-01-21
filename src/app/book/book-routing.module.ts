@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ConfirmLeaveGuard } from './guards/confirm-leave.guard';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookComponent } from './book.component';
+import { BookEditComponent } from './book-edit/book-edit.component';
 
 const routes: Routes = [
   {
@@ -11,8 +12,12 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'details/:isbn',
+    path: ':isbn',
     component: BookDetailComponent,
+  },
+  {
+    path: ':isbn/edit',
+    component: BookEditComponent,
     canDeactivate: [ConfirmLeaveGuard],
   },
 ];

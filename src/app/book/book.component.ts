@@ -23,7 +23,7 @@ export class BookComponent implements OnInit {
   }
 
   goToBookDetails(book: Book): void {
-    this.router.navigate(['/books', 'details', book.isbn])
+    this.router.navigate(['/books', book.isbn])
   }
 
   updateBookSearchTerm(event: Event): void {
