@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { BookDetailComponent } from "./book/book-detail/book-detail.component";
 import { BookComponent } from "./book/book.component";
 import { AboutComponent } from "./components/about/about.component";
+import { ConfirmLeaveGuard } from "./confirm-leave.guard";
 
 const routes: Routes = [
     {
@@ -12,11 +13,7 @@ const routes: Routes = [
     },
     {
         path: 'books',
-        component: BookComponent
-    },
-    {
-        path: 'books/details/:isbn',
-        component: BookDetailComponent
+        loadChildren: () => import('./book/book.module').then(m => m.BookModule)
     },
     {
         path: 'about',
