@@ -1,4 +1,4 @@
-<form *ngIf="book" #form="ngForm" (ngSubmit)="save(form)">
+<form *ngIf="book" #form="ngForm" (ngSubmit)="save()">
   <div class="form-field">
     <label for="title">Title</label>
     <input id="title" type="text" [(ngModel)]="book.title" name="title" #title="ngModel" required/>

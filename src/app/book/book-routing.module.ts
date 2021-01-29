@@ -4,12 +4,17 @@ import { ConfirmLeaveGuard } from './guards/confirm-leave.guard';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookComponent } from './book.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
+import { BookNewComponent } from './book-new/book-new.component';
 
 const routes: Routes = [
   {
     path: '',
     component: BookComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'new',
+    component: BookNewComponent,
   },
   {
     path: ':isbn',

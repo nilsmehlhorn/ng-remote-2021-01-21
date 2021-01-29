@@ -15,4 +15,8 @@ export class BookApiService {
   getBookByIsbn(isbn: string): Observable<Book> {
     return this.http.get<Book>(`http://localhost:4730/books/${isbn}`);
   }
+
+  saveBook(book: Partial<Book>): Observable<Book> {
+    return this.http.post<Book>('http://localhost:4730/books', book)
+  }
 }

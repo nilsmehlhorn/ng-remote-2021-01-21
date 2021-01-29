@@ -23,7 +23,7 @@ export class BookEditComponent implements OnInit {
       .subscribe((bookFromApi) => (this.book = bookFromApi));
   }
 
-  save(form: FormGroup): void {
+  save(): void {
     console.log(this.book)
   }
 

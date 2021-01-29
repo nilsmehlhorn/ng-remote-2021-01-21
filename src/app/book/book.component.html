@@ -1,4 +1,5 @@
 <input placeholder="Filter ..." (input)="updateBookSearchTerm($event)" />
+<a routerLink="new">New</a>
 <ng-container *ngIf="books$ | async as books; else loading">
   <app-book-card
     [content]="book"

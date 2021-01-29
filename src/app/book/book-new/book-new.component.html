@@ -1,0 +1,10 @@
+<h4>New Book</h4>
+<form [formGroup]="form" (ngSubmit)="save(form.value)">
+    <input type="text" formControlName="title">
+    <label for="numPages">
+        Pages
+        <input id="numPages" type="number" formControlName="numPages">
+        <small *ngIf="form.get('numPages')?.hasError('min') && form.get('numPages')?.dirty">Book needs some pages</small>
+    </label>
+    <button [disabled]="form.invalid" type="submit">Submit</button>
+</form>

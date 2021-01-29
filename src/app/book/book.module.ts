@@ -7,11 +7,12 @@ import { BookFilterPipe } from './pipes/book-filter.pipe';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookRoutingModule } from './book-routing.module';
 import { BookEditComponent } from './book-edit/book-edit.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BookNewComponent } from './book-new/book-new.component';
 
 @NgModule({
-  declarations: [BookComponent, BookCardComponent, BookFilterPipe, BookDetailComponent, BookEditComponent],
-  imports: [CommonModule, BookRoutingModule, FormsModule],
+  declarations: [BookComponent, BookCardComponent, BookFilterPipe, BookDetailComponent, BookEditComponent, BookNewComponent],
+  imports: [CommonModule, BookRoutingModule, FormsModule, ReactiveFormsModule],
   exports: [BookComponent],
   providers: [BookApiService]
 })
